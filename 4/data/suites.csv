@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","59","deve retornar 404 para CPF não mapeado no WireMock","api","Fri Feb 20 21:23:29 UTC 2026","passed","Fri Feb 20 21:23:29 UTC 2026","Contrato Governo (WireMock)","tests/api/contrato-governo.spec.ts","",""
+"","222","deve retornar contrato esperado para CPF mapeado","api","Fri Feb 20 21:23:28 UTC 2026","passed","Fri Feb 20 21:23:29 UTC 2026","Contrato Governo (WireMock)","tests/api/contrato-governo.spec.ts","",""
+"","65","deve acessar a aplicação frontend","e2e","Fri Feb 20 21:23:27 UTC 2026","skipped","Fri Feb 20 21:23:27 UTC 2026","","tests/e2e/validacao-cpf.spec.ts","",""
