@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/cpf/12345678900"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "status": "REGULAR",
+      "cpf": "{{request.pathSegments.[3]}}"
+    }
+  }
+}

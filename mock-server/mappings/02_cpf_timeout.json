@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/cpf/99999999999"
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": 30000,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "status": "REGULAR",
+      "cpf": "99999999999"
+    }
+  }
+}

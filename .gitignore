@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+
+# Artefatos de teste (Playwright)
+test-results/
+playwright-report/
+
+# Arquivos de ambiente locais
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos do sistema/editor
+.DS_Store
+.vscode/settings.json
