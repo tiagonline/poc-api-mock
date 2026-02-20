@@ -65,3 +65,5 @@ Se o container estiver `Up` e ainda assim o `localhost` não abrir no navegador,
 
 - Verifique se existe frontend rodando na URL configurada em `FRONTEND_URL`.
 - Se não houver app frontend ativo, o teste E2E pode ser pulado conforme o fallback implementado.
+
+Autor: Tiago Silva
