@@ -1,9 +1,10 @@
+version: '3.8'
 services:
   wiremock:
     image: wiremock/wiremock:latest
     container_name: wiremock
-    ports:
-      - "8081:8080"
+    network_mode: "host"
     volumes:
       - "./mock-server/mappings:/home/wiremock/mappings"
-    command: --verbose --global-response-templating
+    # Forçamos o WireMock a rodar na 8081 via linha de comando
+    command: --port 8081 --verbose --global-response-templating
