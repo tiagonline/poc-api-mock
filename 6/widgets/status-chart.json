@@ -1,1 +1,1 @@
-[]
+[{"uid":"5483497cf6ee302","name":"deve retornar contrato esperado para CPF mapeado","time":{"start":1771858864641,"stop":1771858864858,"duration":217},"status":"passed","severity":"normal"},{"uid":"4fbe1a17f6331d3b","name":"deve retornar 404 para CPF não mapeado no WireMock","time":{"start":1771858864884,"stop":1771858864939,"duration":55},"status":"passed","severity":"normal"},{"uid":"4441fb80750812cf","name":"deve acessar a aplicação frontend","time":{"start":1771858856522,"stop":1771858856589,"duration":67},"status":"skipped","severity":"normal"}]
