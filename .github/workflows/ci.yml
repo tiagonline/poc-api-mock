@@ -5,14 +5,10 @@ on:
     branches: ["main"]
   pull_request:
 
-# 🔐 Permissão de escrita para a Action criar a branch gh-pages
 permissions:
   contents: write
 
 jobs:
-  # ==========================================
-  # ⚡ JOB 1: TESTES DE API (Isolado)
-  # ==========================================
   api-tests:
     name: ⚡ API Tests
     runs-on: ubuntu-latest
@@ -29,7 +25,7 @@ jobs:
       - name: Instalar Playwright
         run: npx playwright install --with-deps chromium
 
-      - name: Subir WireMock (Service Virtualization)
+      - name: Subir WireMock
         run: npm run mock:start
 
       - name: Executar Testes de API
@@ -37,7 +33,7 @@ jobs:
           API_GOVERNO_URL: http://localhost:8080
         run: npm run test:api
 
-      - name: Salvar Allure Results (API)
+      - name: Salvar Allure Results API
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -45,9 +41,6 @@ jobs:
           path: allure-results
           retention-days: 1
 
-  # ==========================================
-  # 🖥️ JOB 2: TESTES E2E (Isolado)
-  # ==========================================
   e2e-tests:
     name: 🖥️ E2E Tests
     runs-on: ubuntu-latest
@@ -64,16 +57,16 @@ jobs:
       - name: Instalar Playwright
         run: npx playwright install --with-deps chromium
 
-      - name: Subir WireMock (Service Virtualization)
+      - name: Subir WireMock
         run: npm run mock:start
 
       - name: Executar Testes E2E
         env:
           API_GOVERNO_URL: http://localhost:8080
-          FRONTEND_URL: http://localhost:3000 # Caso tenhas app a correr, ajusta aqui
+          FRONTEND_URL: http://localhost:3000
         run: npm run test:e2e
 
-      - name: Salvar Allure Results (E2E)
+      - name: Salvar Allure Results E2E
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -81,31 +74,56 @@ jobs:
           path: allure-results
           retention-days: 1
 
-  # ==========================================
-  # 📊 JOB 3: PUBLISH UNIFIED REPORT
-  # ==========================================
   publish-report:
     name: 📊 Publish Unified Report
-    needs: [api-tests, e2e-tests] # Só corre depois dos testes terminarem
-    if: always() # Corre mesmo que os testes falhem (para vermos o erro no report)
+    needs: [api-tests, e2e-tests]
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Faz o download dos resultados paralelos para uma pasta consolidada
-      - name: Download API Results
+      - name: Download de todos os resultados
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-api
+          pattern: allure-results-*
           path: allure-results
+          merge-multiple: true
 
-      - name: Download E2E Results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-e2e
-          path: allure-results
+      - name: Configurar Metadados do Allure
+        run: |
+          cat <<EOF > allure-results/environment.properties
+          Sistema_Operacional=Ubuntu Latest
+          Node_Version=22.x
+          Navegador=Chromium
+          Ambiente=Mock Server (WireMock)
+          EOF
 
-      # Gera o relatório visual a partir dos JSONs consolidados
+          cat <<EOF > allure-results/categories.json
+          [
+            {
+              "name": "Ignorados por Infra",
+              "matchedStatuses": ["skipped"]
+            },
+            {
+              "name": "Falhas de Contrato",
+              "matchedStatuses": ["failed"],
+              "messageRegex": ".*Violação de Contrato.*"
+            }
+          ]
+          EOF
+
+          cat <<EOF > allure-results/executor.json
+          {
+            "name": "GitHub Actions",
+            "type": "github",
+            "reportName": "Dashboard de Qualidade QA Guru",
+            "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "buildOrder": ${{ github.run_number }},
+            "buildName": "Run #${{ github.run_number }}",
+            "buildUrl": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }
+          EOF
+
       - name: Gerar Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -116,7 +134,6 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
 
-      # Publica no GitHub Pages
       - name: Deploy to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
@@ -125,8 +142,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
-      # NOVO PASSO: Injeta a Central de Relatórios "Jujubinha" no Resumo
-      - name: 🔗 Central de Relatórios Unificada
+      - name: Central de Relatórios Unificada
         if: always()
         run: |
           cat <<EOF >> $GITHUB_STEP_SUMMARY
@@ -134,9 +150,9 @@ jobs:
 
           | Tipo de Teste | Status | Link de Acesso |
           | :--- | :---: | :--- |
-          | 🥇 **QA Dashboard (Allure)** | ✅ Gerado | [Ver Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/) |
+          | 🥇 **QA Dashboard** | ✅ Gerado | [Ver Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/) |
           | 🧪 **Testes de API** | ✅ Isolados | Mockados via WireMock |
           | 🖥️ **Testes E2E** | ✅ Isolados | Mockados via WireMock |
 
-          > _Nota: Se a página der erro 404 nos primeiros segundos, aguarde o job "pages build and deployment" do GitHub finalizar o deploy em background._
+          > _Nota: Aguarde o job "pages build and deployment" finalizar o deploy._
           EOF
