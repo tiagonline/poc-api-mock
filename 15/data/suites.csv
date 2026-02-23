@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","32","Passo 3: [PATCH] Deve atualizar o status da proposta","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","CRUD - Ciclo de Vida da Proposta de Seguro","Fluxo Integrado de Negócio","",""
+"","107","deve retornar 404 para CPF não mapeado no WireMock","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","Integrações Governamentais","Testes de Contrato com Governo","",""
+"","195","deve retornar contrato esperado para CPF mapeado","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","Integrações Governamentais","Testes de Contrato com Governo","",""
+"","72","Passo 2: [GET] Deve consultar os detalhes da proposta criada (Contrato Complexo)","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","CRUD - Ciclo de Vida da Proposta de Seguro","Fluxo Integrado de Negócio","",""
+"","146","Passo 1: [POST] Deve criar uma nova proposta de seguro","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","CRUD - Ciclo de Vida da Proposta de Seguro","Fluxo Integrado de Negócio","",""
+"","23","Passo 4: [DELETE] Deve cancelar a proposta","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","CRUD - Ciclo de Vida da Proposta de Seguro","Fluxo Integrado de Negócio","",""
+"","17","Exceção: [GET] Deve tratar Erro 500 do servidor gracefully","api","Mon Feb 23 18:55:51 UTC 2026","passed","Mon Feb 23 18:55:51 UTC 2026","CRUD - Ciclo de Vida da Proposta de Seguro","Fluxo Integrado de Negócio","",""
