@@ -1,0 +1,8 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","","0","","0","4","","0"
+"0","Backend & APIs","1","Core de Seguros (CRUD de Propostas)","0","0","Criação de Proposta","0"
+"0","Engenharia de Confiabilidade (SRE)","1","Mecanismo de Autorrecuperação","0","0","Sobrevivência a Flaky Network","0"
+"0","Backend & APIs","0","Validação de CPF (Service Virtualization)","0","2","","0"
+"0","Frontend Web","0","Tela de Consulta de CPF","0","1","Renderização da Home Page","0"
+"0","IA & GenAI","1","Self-Healing de API","0","0","Correção dinâmica de Payload no 400 Bad Request","0"
+"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Consulta de Proposta","0"
