@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "mock:start": "docker compose -f mock-server/docker-compose.yml up -d",
-    "mock:stop": "docker compose -f mock-server/docker-compose.yml down",
+    "mock:start": "docker compose up -d",
+    "mock:stop": "docker compose down",
     "test:api": "playwright test tests/api",
     "test:e2e": "playwright test tests/e2e",
     "test:ci": "sh -c 'npm run mock:start && npm run test:api && npm run test:e2e; EXIT_CODE=$?; npm run mock:stop; exit $EXIT_CODE'"
