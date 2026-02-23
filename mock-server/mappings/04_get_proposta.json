@@ -1,7 +1,7 @@
 {
   "request": { "method": "GET", "urlPathPattern": "/api/v1/propostas/PRP-[0-9]+" },
   "response": {
-    "status": 200,
+    "status": 404,
     "headers": { "Content-Type": "application/json" },
     "jsonBody": {
       "id": "{{request.pathSegments.[3]}}",

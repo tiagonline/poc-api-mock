@@ -17,3 +17,5 @@ pnpm-debug.log*
 # Arquivos do sistema/editor
 .DS_Store
 .vscode/settings.json
+
+allure-results/
