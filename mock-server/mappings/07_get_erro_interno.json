@@ -1,0 +1,8 @@
+{
+  "request": { "method": "GET", "urlPath": "/api/v1/propostas/PRP-99999999" },
+  "response": {
+    "status": 500,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "erro": "Internal Server Error", "codigo": "ERR-DB-001" }
+  }
+}

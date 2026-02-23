@@ -1,0 +1,15 @@
+{
+  "request": { "method": "GET", "urlPathPattern": "/api/v1/propostas/PRP-[0-9]+" },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "{{request.pathSegments.[3]}}",
+      "status": "EM_ANALISE",
+      "cliente": { "nome": "João da Silva", "score_credito": 850 },
+      "veiculo": { "marca": "Toyota", "modelo": "Corolla", "ano": 2024 },
+      "coberturas": ["COLISAO", "TERCEIROS", "ROUBO"],
+      "valor_premio": 3500.50
+    }
+  }
+}

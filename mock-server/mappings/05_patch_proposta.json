@@ -1,0 +1,11 @@
+{
+  "request": { 
+    "method": "PATCH", 
+    "urlPathPattern": "/api/v1/propostas/PRP-[0-9]+" 
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "sucesso": true, "timestamp": "{{now}}", "acao": "ATUALIZADO" }
+  }
+}
