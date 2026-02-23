@@ -5,6 +5,7 @@ on:
     branches: ["main"]
   pull_request:
 
+# 🔐 Permissão de escrita para a Action criar a branch gh-pages
 permissions:
   contents: write
 
@@ -115,7 +116,7 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
 
-      # Publica no GitHub Pages (Ficará com um link igual ao da tua imagem)
+      # Publica no GitHub Pages
       - name: Deploy to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
@@ -123,3 +124,19 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
+      # NOVO PASSO: Injeta a Central de Relatórios "Jujubinha" no Resumo
+      - name: 🔗 Central de Relatórios Unificada
+        if: always()
+        run: |
+          cat <<EOF >> $GITHUB_STEP_SUMMARY
+          ### 📊 Central de Relatórios Unificada
+
+          | Tipo de Teste | Status | Link de Acesso |
+          | :--- | :---: | :--- |
+          | 🥇 **QA Dashboard (Allure)** | ✅ Gerado | [Ver Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/) |
+          | 🧪 **Testes de API** | ✅ Isolados | Mockados via WireMock |
+          | 🖥️ **Testes E2E** | ✅ Isolados | Mockados via WireMock |
+
+          > _Nota: Se a página der erro 404 nos primeiros segundos, aguarde o job "pages build and deployment" do GitHub finalizar o deploy em background._
+          EOF
