@@ -1,4 +1,5 @@
 {
+  "priority": 1,
   "request": { "method": "GET", "urlPath": "/api/v1/propostas/PRP-99999999" },
   "response": {
     "status": 500,
