@@ -1,8 +1,0 @@
-"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
-"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Atualização de Proposta","0"
-"0","Backend & APIs","0","Validação de CPF (Service Virtualization)","1","0","Caminho de Exceção - CPF Inválido","0"
-"0","Backend & APIs","0","Validação de CPF (Service Virtualization)","1","0","Caminho Feliz - CPF Regular","0"
-"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Consulta de Proposta","0"
-"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Criação de Proposta","0"
-"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Cancelamento de Proposta","0"
-"0","Backend & APIs","0","Core de Seguros (CRUD de Propostas)","1","0","Tratamento de Falhas Sistêmicas","0"
