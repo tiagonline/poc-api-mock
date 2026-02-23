@@ -1,7 +1,12 @@
+// Arquivo: tests/api/crud-propostas.spec.ts
+
 import { expect, test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import Ajv from 'ajv';
 import { allure } from 'allure-playwright';
+
+// 📦 Importando o contrato centralizado
+import { propostaSchema } from './schemas/proposta.schema';
 
 const ajv = new Ajv();
 
@@ -38,7 +43,7 @@ test.describe.serial('CRUD - Ciclo de Vida da Proposta de Seguro', () => {
     expect(body.status).toBe('CRIADA');
   });
 
-  test('Passo 2: [GET] Deve consultar os detalhes da proposta criada (Contrato Complexo)', async ({ request }) => {
+  test('Passo 2: [GET] Deve consultar os detalhes da proposta criada', async ({ request }) => {
     allure.story('Consulta de Proposta');
     allure.tags('GET', 'Contract');
 
@@ -48,29 +53,9 @@ test.describe.serial('CRUD - Ciclo de Vida da Proposta de Seguro', () => {
 
     const body = await response.json();
 
-    // 🏆 Validação de Contrato Complexo (Objetos, Arrays e Tipos)
-    const schema = {
-      type: 'object',
-      properties: {
-        id: { type: 'string' },
-        status: { type: 'string' },
-        cliente: {
-          type: 'object',
-          properties: { nome: { type: 'string' }, score_credito: { type: 'number' } },
-          required: ['nome', 'score_credito']
-        },
-        veiculo: {
-          type: 'object',
-          properties: { marca: { type: 'string' }, modelo: { type: 'string' }, ano: { type: 'number' } }
-        },
-        coberturas: { type: 'array', items: { type: 'string' }, minItems: 1 },
-        valor_premio: { type: 'number' }
-      },
-      required: ['id', 'status', 'cliente', 'veiculo', 'coberturas'],
-      additionalProperties: false // Aqui fomos estritos! Nada de campo vazado.
-    };
-
-    const isValid = ajv.validate(schema, body);
+    // 🏆 Validação de Contrato Limpa (Clean Code)
+    const isValid = ajv.validate(propostaSchema, body);
+    
     expect(isValid, `Violação de Contrato: ${ajv.errorsText()}`).toBe(true);
     expect(body.id).toBe(propostaId); // Garante que retornou a mesma
   });
@@ -93,7 +78,7 @@ test.describe.serial('CRUD - Ciclo de Vida da Proposta de Seguro', () => {
     allure.tags('DELETE');
 
     const response = await request.delete(`/api/v1/propostas/${propostaId}`);
-    // No WireMock mapeamos para 200 com payload de sucesso, mas poderia ser 204
+    // No WireMock mapeamos para 200 com payload de sucesso
     expect(response.status()).toBe(200); 
   });
 

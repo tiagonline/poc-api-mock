@@ -1,0 +1,9 @@
+{
+  "priority": 2,
+  "request": { "method": "POST", "url": "/api/v1/propostas" },
+  "response": {
+    "status": 400,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "erro": "Bad Request", "mensagem": "O contrato mudou. O campo 'idade_condutor' (inteiro) agora é obrigatório." }
+  }
+}

@@ -1,8 +1,12 @@
 import { defineConfig } from "@playwright/test";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
-dotenv.config({ path: ".env.example", override: false });
+// 1. Tenta carregar o arquivo .env oficial da máquina local
+dotenv.config({ path: path.resolve(__dirname, 'envs', '.env') });
+
+// 2. Se não achar o .env (como no CI/CD), usa o .env.example como fallback de segurança
+dotenv.config({ path: path.resolve(__dirname, 'envs', '.env.example'), override: false });
 
 const apiBaseUrl = process.env.API_GOVERNO_URL ?? "http://localhost:8080";
 const frontendBaseUrl = process.env.FRONTEND_URL ?? "http://localhost:3000";

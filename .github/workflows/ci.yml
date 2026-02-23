@@ -31,6 +31,8 @@ jobs:
       - name: Executar Testes de API
         env:
           API_GOVERNO_URL: http://localhost:8080
+          # 🪄 O cérebro da IA injetado com segurança aqui!
+          AZURE_AI_TOKEN: ${{ secrets.AZURE_AI_TOKEN }}
         run: npm run test:api
 
       - name: Salvar Allure Results API
@@ -64,6 +66,8 @@ jobs:
         env:
           API_GOVERNO_URL: http://localhost:8080
           FRONTEND_URL: http://localhost:3000
+          # 🪄 Também disponível para futuros cenários de UI Healing
+          AZURE_AI_TOKEN: ${{ secrets.AZURE_AI_TOKEN }}
         run: npm run test:e2e
 
       - name: Salvar Allure Results E2E

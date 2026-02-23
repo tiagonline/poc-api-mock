@@ -1,0 +1,15 @@
+{
+  "priority": 1,
+  "request": { 
+    "method": "POST", 
+    "url": "/api/v1/propostas",
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.idade_condutor" } 
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "id": "PRP-V2-{{randomValue type='NUMERIC' length=5}}", "status": "CRIADA" }
+  }
+}
