@@ -1,0 +1,13 @@
+{
+  "scenarioName": "Flaky Connection",
+  "requiredScenarioState": "Segunda_Tentativa",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/instavel"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "sucesso": "Self-Healing funcionou! Conectado na segunda tentativa." }
+  }
+}

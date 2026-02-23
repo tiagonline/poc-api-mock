@@ -1,0 +1,14 @@
+{
+  "scenarioName": "Flaky Connection",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "Segunda_Tentativa",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/instavel"
+  },
+  "response": {
+    "status": 503,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "erro": "Service Unavailable - O servidor piscou!" }
+  }
+}
