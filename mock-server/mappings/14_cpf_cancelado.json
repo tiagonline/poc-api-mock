@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/cpf/44444444444"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "status": "CANCELADO",
+      "cpf": "44444444444",
+      "mensagem": "CPF Cancelado por multiplicidade."
+    }
+  }
+}

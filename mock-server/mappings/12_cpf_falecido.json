@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/cpf/22222222222"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "status": "FALECIDO",
+      "cpf": "22222222222",
+      "mensagem": "Operação negada: Titular falecido segundo a Receita Federal."
+    }
+  }
+}

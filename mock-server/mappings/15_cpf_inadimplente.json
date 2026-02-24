@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/cpf/55555555555"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "status": "INADIMPLENTE",
+      "cpf": "55555555555",
+      "mensagem": "Atenção: Constam pendências financeiras atreladas a este CPF."
+    }
+  }
+}
