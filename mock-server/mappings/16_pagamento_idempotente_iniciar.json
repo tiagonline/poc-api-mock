@@ -1,0 +1,23 @@
+{
+  "scenarioName": "Pagamento_Idempotente",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "Processado",
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/pagamentos",
+    "headers": {
+      "Idempotency-Key": {
+        "equalTo": "chave-secreta-123"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "PAY-999888",
+      "status": "APROVADO",
+      "mensagem": "Pagamento processado com sucesso na base de dados."
+    }
+  }
+}
