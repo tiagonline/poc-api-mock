@@ -6,7 +6,7 @@ OpenAI)**.
 
 ------------------------------------------------------------------------
 
-## O Desafio (Por que não usar a API real?)
+### O Desafio (Por que não usar a API real?)
 
 Neste projeto, nós não batemos na API real do Governo ou de parceiros.
 Depender de serviços externos em ambientes de CI/CD é a principal causa
@@ -33,7 +33,7 @@ CI). Isso nos garante:
 
 ------------------------------------------------------------------------
 
-## 🤖 Generative QA & AI Self-Healing
+### 🤖 Generative QA & AI Self-Healing
 
 Esta POC introduz a quebra de paradigma na manutenção de testes: **Zero
 Manutenção de Contratos**.\
@@ -48,7 +48,7 @@ campo obrigatório e retornar HTTP 400), o teste **não falha**.
 
 ------------------------------------------------------------------------
 
-## Comandos importantes
+### Comandos importantes
 
 ``` bash
 # Instalar dependências
@@ -75,23 +75,23 @@ npm run test:ci
 
 ------------------------------------------------------------------------
 
-# 🚀 Dicas Rápidas e Massa de Dados (WireMock)
+### 🚀 Dicas Rápidas e Massa de Dados (WireMock)
 
-## 🔧 Painel Admin do WireMock
+#### 🔧 Painel Admin do WireMock
 
     http://127.0.0.1:8081/__admin/mappings
 
 ------------------------------------------------------------------------
 
-## 🔄 Simulações Disponíveis
+### 🔄 Simulações Disponíveis
 
-### ⚠️ Simulação de Instabilidade (Flaky)
+#### ⚠️ Simulação de Instabilidade (Flaky)
 
     GET /api/v1/instavel
 
 > Falha na 1ª tentativa, passa na 2ª.
 
-### 🤖 CRUD V2 (AI Healing)
+#### 🤖 CRUD V2 (AI Healing)
 
     POST /api/v1/propostas
 
@@ -99,7 +99,7 @@ npm run test:ci
 
 ------------------------------------------------------------------------
 
-# 📦 Massa de CPFs Disponível (Data-Driven)
+## 📦 Massa de CPFs Disponível (Data-Driven)
 
   --------------------------------------------------------------------------
   CPF           Cenário                    Status
@@ -121,9 +121,9 @@ npm run test:ci
 
 ------------------------------------------------------------------------
 
-# 🛠️ Troubleshooting
+## 🛠️ Troubleshooting
 
-## ❌ http://127.0.0.1:8081 não responde
+### ❌ http://127.0.0.1:8081 não responde
 
 ``` bash
 # Confirma se o container está de pé
@@ -138,7 +138,7 @@ docker compose logs --tail=100 -f wiremock
 
 ------------------------------------------------------------------------
 
-## ⏳ test:api está lento ou falhando por timeout
+### ⏳ test:api está lento ou falhando por timeout
 
 -   O CPF `99999999999` foi mapeado propositalmente com delay de 30s.
 -   Verifique se o WireMock está rodando:
@@ -153,7 +153,7 @@ npm run mock:start
 
 ------------------------------------------------------------------------
 
-## 🤖 AI Self-Healing Falhando
+### 🤖 AI Self-Healing Falhando
 
 -   Certifique-se de que a variável de ambiente `AZURE_AI_TOKEN` está
     configurada corretamente:
@@ -162,7 +162,7 @@ npm run mock:start
 
 ------------------------------------------------------------------------
 
-## 👤 Autor
+### 👤 Autor
 
 Tiago Silva
 
