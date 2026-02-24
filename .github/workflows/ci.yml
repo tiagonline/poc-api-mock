@@ -26,11 +26,15 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Subir WireMock
-        run: npm run mock:start
+        run: |
+          npm run mock:start
+          echo "⏳ A aguardar 5 segundos para o WireMock inicializar completamente..."
+          sleep 5
 
       - name: Executar Testes de API
         env:
-          API_GOVERNO_URL: http://localhost:8080
+          # 🚀 O ajuste de mestre: IP Fixo e Porta 8081
+          API_GOVERNO_URL: http://127.0.0.1:8081
           # 🪄 O cérebro da IA injetado com segurança aqui!
           AZURE_AI_TOKEN: ${{ secrets.AZURE_AI_TOKEN }}
         run: npm run test:api
@@ -60,12 +64,16 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Subir WireMock
-        run: npm run mock:start
+        run: |
+          npm run mock:start
+          echo "⏳ A aguardar 5 segundos para o WireMock inicializar completamente..."
+          sleep 5
 
       - name: Executar Testes E2E
         env:
-          API_GOVERNO_URL: http://localhost:8080
-          FRONTEND_URL: http://localhost:3000
+          # 🚀 O ajuste de mestre também aplicado ao E2E
+          API_GOVERNO_URL: http://127.0.0.1:8081
+          FRONTEND_URL: http://127.0.0.1:3000
           # 🪄 Também disponível para futuros cenários de UI Healing
           AZURE_AI_TOKEN: ${{ secrets.AZURE_AI_TOKEN }}
         run: npm run test:e2e
@@ -99,7 +107,7 @@ jobs:
           Sistema_Operacional=Ubuntu Latest
           Node_Version=22.x
           Navegador=Chromium
-          Ambiente=Mock Server (WireMock)
+          Ambiente=Mock Server (WireMock) na porta 8081
           EOF
 
           cat <<EOF > allure-results/categories.json

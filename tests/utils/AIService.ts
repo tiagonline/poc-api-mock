@@ -1,70 +1,68 @@
+import { OpenAI } from 'openai';
+
 export class AIService {
-  private readonly endpoint = "https://models.inference.ai.azure.com/chat/completions";
-  private readonly token: string;
+  private client: OpenAI;
 
   constructor() {
-    this.token = process.env.AZURE_AI_TOKEN || "";
-    if (!this.token) console.warn("[AIService] ⚠️ Token AZURE_AI_TOKEN não encontrado no .env!");
+    this.client = new OpenAI({
+      baseURL: 'https://models.inference.ai.azure.com',
+      apiKey: process.env.AZURE_AI_TOKEN,
+    });
   }
 
+  /**
+   * Envia o erro e o payload para a IA e retorna um novo payload corrigido
+   */
   async healPayload(originalPayload: any, apiError: any): Promise<any> {
-    console.log("[AIService] 🚀 Iniciando análise de quebra de contrato via IA...");
+    console.log('\n======================================================');
+    console.log('🤖 [AIService] 🚀 Iniciando análise de quebra de contrato...');
     
-    if (!this.token) {
-        console.warn("[AIService] IA desativada: Token ausente. Retornando payload original.");
-        return originalPayload;
-    }
+    // Log do problema
+    console.log('❌ [AIService] Erro reportado pelo Mock/API:');
+    console.log(JSON.stringify(apiError, null, 2));
+    
+    // Log do payload antigo
+    console.log('\n📦 [AIService] Payload original (Rejeitado):');
+    console.log(JSON.stringify(originalPayload, null, 2));
+    console.log('======================================================\n');
 
-    const systemPrompt = `
-      Você é uma IA de Self-Healing para automação de testes de API (Playwright).
-      Objetivo: Consertar payloads JSON quebrados baseados na mensagem de erro da API.
+    console.log('[AIService] 📤 A pedir ajuda ao gpt-4o-mini na Azure...');
+
+    const prompt = `
+      A API retornou um erro de validação.
+      Erro da API: ${JSON.stringify(apiError)}
+      Payload Original: ${JSON.stringify(originalPayload)}
       
-      Regras:
-      1. Analise o erro retornado pela API e o payload original.
-      2. Adicione os campos obrigatórios ausentes no payload com dados fictícios válidos deduzidos pelo erro.
-      3. Retorne APENAS o JSON corrigido puro. Não use marcação markdown (como \`\`\`json).
+      Por favor, analise o erro e o payload original, e devolva APENAS um JSON válido corrigido.
+      Não adicione formatação markdown, apenas o JSON.
     `;
 
     try {
-      console.log(`[AIService] 📤 Enviando requisição para gpt-4o-mini...`);
-
-      const response = await fetch(this.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${this.token}`
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: `Erro da API: ${JSON.stringify(apiError)}\n\nPayload Original:\n${JSON.stringify(originalPayload)}` }
-          ],
-          model: "gpt-4o-mini", // Modelo rápido e barato
-          temperature: 0.1,     // Baixa temperatura para ser determinístico
-          max_tokens: 300       // Limite pequeno pois o JSON é curto
-        })
+      const response = await this.client.chat.completions.create({
+        messages: [{ role: "user", content: prompt }],
+        model: "gpt-4o-mini", // ou o nome exato do seu modelo/deployment
+        temperature: 0.1,
+        max_tokens: 300,
       });
 
-      if (!response.ok) {
-        console.error(`[AIService] ❌ Erro API: ${response.status} - ${response.statusText}`);
-        return originalPayload; // Se a IA falhar, devolve o que tinha para o teste quebrar naturalmente
-      }
-
-      const data = await response.json() as any;
-      let content = data.choices?.[0]?.message?.content || "{}";
+      const content = response.choices[0].message.content || '{}';
       
-      console.log(`[AIService] 📥 IA respondeu com o novo contrato.`);
+      // Limpeza de segurança (caso a IA insista em devolver markdown ```json)
+      const cleanJson = content.replace(/```json/g, '').replace(/```/g, '').trim();
+      
+      const healedPayload = JSON.parse(cleanJson);
 
-      // Limpeza de segurança caso a IA mande markdown mesmo com o prompt pedindo para não mandar
-      if (content.includes('```json')) {
-        content = content.replace(/```json/g, '').replace(/```/g, '').trim();
-      }
+      // Log da solução!
+      console.log('\n======================================================');
+      console.log('✅ [AIService] 📥 A IA compreendeu o erro e gerou um NOVO Payload:');
+      console.log(JSON.stringify(healedPayload, null, 2));
+      console.log('======================================================\n');
 
-      return JSON.parse(content);
+      return healedPayload;
 
-    } catch (error: any) {
-      console.error(`[AIService] 💥 Exception: ${error.message}`);
-      return originalPayload;
+    } catch (error) {
+      console.error('🚨 [AIService] Falha catastrófica ao contactar a IA:', error);
+      throw error;
     }
   }
 }

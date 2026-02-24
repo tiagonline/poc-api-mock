@@ -4,7 +4,8 @@
     "method": "POST", 
     "url": "/api/v1/propostas",
     "bodyPatterns": [
-      { "matchesJsonPath": "$.idade_condutor" } 
+      { "matchesJsonPath": "$.idade_condutor" },
+      { "matchesJsonPath": "$.cor_veiculo" }
     ]
   },
   "response": {

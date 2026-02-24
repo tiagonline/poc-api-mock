@@ -1,5 +1,5 @@
 {
-  "request": { "method": "GET", "urlPathPattern": "/api/v1/propostas/PRP-[0-9]+" },
+  "request": { "method": "GET", "urlPathPattern": "/api/v1/propostas/PRP-.*"},
   "response": {
     "status": 200,
     "headers": { "Content-Type": "application/json" },

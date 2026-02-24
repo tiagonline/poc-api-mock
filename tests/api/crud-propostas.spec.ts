@@ -31,7 +31,7 @@ test.describe.serial("CRUD - Ciclo de Vida da Proposta de Seguro", () => {
       cpf_cliente: faker.string.numeric(11),
       placa_veiculo: faker.vehicle.vrm(),
       valor_fipe: faker.number.int({ min: 30000, max: 200000 }),
-      idade_condutor: faker.number.int({ min: 18, max: 80 }),
+      idade_condutor: faker.number.int({ min: 18, max: 80 })
     };
 
     const response = await request.post("/api/v1/propostas", { data: payload });

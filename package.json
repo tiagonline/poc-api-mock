@@ -15,5 +15,8 @@
     "ajv": "^8.17.1",
     "allure-playwright": "^3.4.5",
     "dotenv": "^16.4.5"
+  },
+  "dependencies": {
+    "openai": "^6.24.0"
   }
 }

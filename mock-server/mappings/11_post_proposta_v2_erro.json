@@ -4,6 +4,9 @@
   "response": {
     "status": 400,
     "headers": { "Content-Type": "application/json" },
-    "jsonBody": { "erro": "Bad Request", "mensagem": "O contrato mudou. O campo 'idade_condutor' (inteiro) agora é obrigatório." }
+    "jsonBody": { 
+      "erro": "Bad Request", 
+      "mensagem": "O contrato mudou. Os campos 'idade_condutor' (inteiro) e 'cor_veiculo' (string) agora são obrigatórios." 
+    }
   }
 }
