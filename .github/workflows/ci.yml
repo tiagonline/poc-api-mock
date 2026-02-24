@@ -136,6 +136,14 @@ jobs:
           }
           EOF
 
+      # 👇 O BLOCO MÁGICO QUE CURA A AMNÉSIA DO CI 👇
+      - name: Download do Histórico (Trend) da rodada anterior
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
       - name: Gerar Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
