@@ -89,13 +89,13 @@ npm run test:ci
 
     GET /api/v1/instavel
 
-> Falha na 1ª tentativa, passa na 2ª.
+- Falha na 1ª tentativa, passa na 2ª.
 
 #### 🤖 CRUD V2 (AI Healing)
 
     POST /api/v1/propostas
 
-> Exige idade e cor do veículo.
+- Exige idade e cor do veículo.
 
 ------------------------------------------------------------------------
 
@@ -105,19 +105,14 @@ npm run test:ci
   CPF           Cenário                    Status
   ------------- -------------------------- ---------------------------------
   12345678900   🟢 Caminho Feliz           REGULAR
-
   22222222222   💀 Titular Falecido        FALECIDO
-
   33333333333   🚨 Fraude Detectada        BLOQUEADO_FRAUDE (HTTP 403)
-
   44444444444   ❌ Documento Cancelado     CANCELADO
-
   55555555555   💸 Nome Sujo               INADIMPLENTE
-
   99999999999   ⏳ Delay Extremo           30s para responder (Timeout)
   --------------------------------------------------------------------------
 
-> Qualquer outro CPF retornará **Erro 404**.
+- Qualquer outro CPF retornará **Erro 404**.
 
 ------------------------------------------------------------------------
 
@@ -133,8 +128,8 @@ docker compose ps
 docker compose logs --tail=100 -f wiremock
 ```
 
-> Nota: Estamos utilizando `network_mode: "host"` no Docker para evitar
-> bloqueios de firewall corporativo/antivírus.
+- Nota: Estamos utilizando `network_mode: "host"` no Docker para evitar
+  bloqueios de firewall corporativo/antivírus.
 
 ------------------------------------------------------------------------
 
@@ -166,5 +161,5 @@ npm run mock:start
 
 Tiago Silva
 
-> POC desenvolvida para demonstrar o futuro da Qualidade de Software com
-> IA e Virtualização.
+- POC desenvolvida para demonstrar o futuro da Qualidade de Software com
+IA e Virtualização.
