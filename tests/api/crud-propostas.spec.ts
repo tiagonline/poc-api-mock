@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import Ajv from "ajv";
 import { allure } from "allure-playwright";
 
-// 📦 Importando o contrato centralizado
+// Importando o contrato centralizado
 import { propostaSchema } from "./schemas/proposta.schema";
 
 const ajv = new Ajv();
@@ -26,7 +26,7 @@ test.describe.serial("CRUD - Ciclo de Vida da Proposta de Seguro", () => {
     allure.story("Criação de Proposta");
     allure.tags("POST", "Critical", "Sanity");
 
-    // Payload dinâmico usando Data Fuzzing
+    // Payload dinâmico usando faker
 const payload = {
       cpf_cliente: faker.string.numeric(11),
       placa_veiculo: faker.vehicle.vrm(),
@@ -59,7 +59,7 @@ const payload = {
 
     const body = await response.json();
 
-    // 🏆 Validação de Contrato Limpa (Clean Code)
+    // Validação de Contrato Limpa (Clean Code)
     const isValid = ajv.validate(propostaSchema, body);
 
     expect(isValid, `Violação de Contrato: ${ajv.errorsText()}`).toBe(true);

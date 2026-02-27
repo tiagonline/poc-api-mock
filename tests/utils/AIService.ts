@@ -40,7 +40,7 @@ export class AIService {
     try {
       const response = await this.client.chat.completions.create({
         messages: [{ role: "user", content: prompt }],
-        model: "gpt-4o-mini", // ou o nome exato do seu modelo/deployment
+        model: "gpt-4o-mini",
         temperature: 0.1,
         max_tokens: 300,
       });
@@ -49,7 +49,6 @@ export class AIService {
       
       // Limpeza de segurança (caso a IA insista em devolver markdown ```json)
       const cleanJson = content.replace(/```json/g, '').replace(/```/g, '').trim();
-      
       const healedPayload = JSON.parse(cleanJson);
 
       // Log da solução!

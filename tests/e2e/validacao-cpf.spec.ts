@@ -4,7 +4,7 @@ import { allure } from 'allure-playwright';
 test.describe('Jornada do Usuário - Frontend', () => {
 
   test.beforeEach(async () => {
-    // 🎨 MÁGICA DO ALLURE: Preenchendo Suítes e Funcionalidades
+    // ALLURE: Preenchendo Suítes e Funcionalidades
     allure.epic('Frontend Web');
     allure.feature('Tela de Consulta de CPF');
     allure.suite('Testes de UI');

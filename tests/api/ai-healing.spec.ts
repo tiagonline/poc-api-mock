@@ -26,7 +26,7 @@ test.describe("Generative QA - Self-Healing de Contratos", () => {
     let response = await request.post("/api/v1/propostas", { data: payload });
     console.log(`### Resposta inicial da API: ${response.status()} ###`);
 
-    // 3. Toma response 400? Perfeito, é aqui que a mágica acontece! Enviamos o erro e o payload para a IA
+    // 3. Toma response 400? Enviamos o erro e o payload para a IA
     if (response.status() === 400) {
       const erroDaApi = await response.json();
 

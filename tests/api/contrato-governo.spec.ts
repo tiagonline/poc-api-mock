@@ -17,7 +17,7 @@ const gerarCpfNaoMapeado = (): string => {
 test.describe('Integrações Governamentais', () => {
   
   test.beforeEach(async ({ request }) => {
-    // 🎨 MÁGICA DO ALLURE: Preenchendo Suítes e Funcionalidades
+    // ALLURE: Preenchendo Suítes e Funcionalidades
     allure.epic('Backend & APIs');
     allure.feature('Validação de CPF (Service Virtualization)');
     allure.suite('Testes de Contrato com Governo');

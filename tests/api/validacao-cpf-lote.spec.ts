@@ -36,8 +36,8 @@ const massaDeTestes = [
 ];
 
 test.describe("Validação em Lote de Estados de CPF (Data-Driven)", () => {
-  // 🔄 O LAÇO DE REPETIÇÃO (MÁGICA DO PLAYWRIGHT)
-  // O Playwright vai gerar 4 testes dinâmicos com base no array acima!
+  // LAÇO DE REPETIÇÃO
+  // O Playwright vai gerar 4 testes dinâmicos com base no array acima.
   for (const dados of massaDeTestes) {
     test(`Deve validar o cenário: ${dados.cenario} (CPF: ${dados.cpf})`, async ({
       request,
