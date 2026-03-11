@@ -4,7 +4,6 @@ Boilerplate de arquitetura para automação e isolamento de integrações
 externas com **Playwright + WireMock + Inteligência Artificial (Azure
 OpenAI)**.
 
-![CI - Pipeline QA](https://github.com/tiagonline/poc-api-mock/actions/workflows/ci.yml/badge.svg)
 [![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=Playwright&logoColor=white)](https://playwright.dev/)
 [![WireMock](https://img.shields.io/badge/WireMock-8081?style=for-the-badge&logo=wiremock&logoColor=white)](https://wiremock.org/)
 [![Azure OpenAI](https://img.shields.io/badge/Azure_OpenAI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
