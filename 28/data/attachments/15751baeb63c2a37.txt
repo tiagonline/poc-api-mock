@@ -1,0 +1,18 @@
+### Resposta inicial da API: 400 ###
+
+======================================================
+🤖 [AIService] 🚀 Iniciando análise de quebra de contrato...
+❌ [AIService] Erro reportado pelo Mock/API:
+{
+  "erro": "Bad Request",
+  "mensagem": "O contrato mudou. Os campos 'idade_condutor' (inteiro) e 'cor_veiculo' (string) agora são obrigatórios."
+}
+
+📦 [AIService] Payload original (Rejeitado):
+{
+  "cpf_cliente": "39962804103",
+  "placa_veiculo": "CP73VGL"
+}
+======================================================
+
+[AIService] 📤 A pedir ajuda ao gpt-4o-mini na Azure...

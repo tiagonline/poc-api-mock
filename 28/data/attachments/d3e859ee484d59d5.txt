@@ -1,0 +1,38 @@
+🚨 [AIService] Falha catastrófica ao contactar a IA: AuthenticationError: 401 Bad credentials
+    at Function.generate (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/openai/src/core/error.ts:76:14)
+    at OpenAI.makeStatusError (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/openai/src/client.ts:488:28)
+    at OpenAI.makeRequest (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/openai/src/client.ts:738:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at AIService.healPayload (/home/runner/work/poc-api-mock/poc-api-mock/tests/utils/AIService.ts:41:24)
+    at /home/runner/work/poc-api-mock/poc-api-mock/tests/api/ai-healing.spec.ts:39:17
+    at /home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/workerMain.js:323:9
+    at /home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/testInfo.js:320:11
+    at TimeoutManager.withRunnable (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/timeoutManager.js:67:14)
+    at TestInfoImpl._runWithTimeout (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/testInfo.js:318:7)
+    at /home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/workerMain.js:321:7
+    at WorkerMain._runTest (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/workerMain.js:296:5)
+    at WorkerMain.runTestGroup (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/worker/workerMain.js:196:11)
+    at process.<anonymous> (/home/runner/work/poc-api-mock/poc-api-mock/node_modules/playwright/lib/common/process.js:72:22) {
+  status: 401,
+  headers: Headers {
+    date: 'Wed, 11 Mar 2026 16:14:39 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-ms-error-code': 'unauthorized',
+    'request-context': 'appId=',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    'x-content-type-options': 'nosniff',
+    'azureml-served-by-cluster': 'vienna-eastus-01',
+    'x-request-time': '0.054'
+  },
+  requestID: null,
+  error: {
+    code: 'unauthorized',
+    message: 'Bad credentials',
+    details: 'Bad credentials'
+  },
+  code: 'unauthorized',
+  param: undefined,
+  type: undefined
+}
