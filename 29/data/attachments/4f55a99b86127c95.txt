@@ -1,0 +1,6 @@
+
+[Teste] 💸 Enviando a 1ª requisição de pagamento...
+[1ª Tentativa] Status: 201 | Mensagem: Pagamento processado com sucesso na base de dados.
+
+[Teste] ⚠️ Simulando instabilidade (App reenviou o mesmo pagamento)...
+[2ª Tentativa] Status: 200 | Mensagem: Idempotência ativada: Pagamento já havia sido processado. Retornando do cache.
