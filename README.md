@@ -4,6 +4,13 @@ Boilerplate de arquitetura para automação e isolamento de integrações
 externas com **Playwright + WireMock + Inteligência Artificial (Azure
 OpenAI)**.
 
+[![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=Playwright&logoColor=white)](https://playwright.dev/)
+[![WireMock](https://img.shields.io/badge/WireMock-8081?style=for-the-badge&logo=wiremock&logoColor=white)](https://wiremock.org/)
+[![Azure OpenAI](https://img.shields.io/badge/Azure_OpenAI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
+
 ------------------------------------------------------------------------
 
 ### O Desafio (Por que não usar a API real?)
