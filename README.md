@@ -101,16 +101,14 @@ npm run test:ci
 
 ## 📦 Massa de CPFs Disponível (Data-Driven)
 
-  --------------------------------------------------------------------------
-  CPF           Cenário                    Status
-  ------------- -------------------------- ---------------------------------
-  12345678900   🟢 Caminho Feliz           REGULAR
-  22222222222   💀 Titular Falecido        FALECIDO
-  33333333333   🚨 Fraude Detectada        BLOQUEADO_FRAUDE (HTTP 403)
-  44444444444   ❌ Documento Cancelado     CANCELADO
-  55555555555   💸 Nome Sujo               INADIMPLENTE
-  99999999999   ⏳ Delay Extremo           30s para responder (Timeout)
-  --------------------------------------------------------------------------
+| CPF | Cenário | Status |
+| :--- | :--- | :--- |
+| 12345678900 | 🟢 Caminho Feliz | REGULAR |
+| 22222222222 | 💀 Titular Falecido | FALECIDO |
+| 33333333333 | 🚨 Fraude Detectada | BLOQUEADO_FRAUDE (HTTP 403) |
+| 44444444444 | ❌ Documento Cancelado | CANCELADO |
+| 55555555555 | 💸 Nome Sujo | INADIMPLENTE |
+| 99999999999 | ⏳ Delay Extremo | 30s para responder (Timeout) |
 
 - Qualquer outro CPF retornará **Erro 404**.
 
